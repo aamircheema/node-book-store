@@ -1,4 +1,16 @@
 import React, { useState } from 'react'
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+
 
 const searchByAuthor = (books, author) => {
     const filteredBook = books.filter(book => book.author.toLowerCase() === author.toLowerCase());
@@ -20,37 +32,48 @@ const SearchBook = ({ books }) => {
     }
 
     return (
-        <div><hr />
+        <div>
+            <hr />
             <form onSubmit={submitForm}>
-                <label htmlFor="search-input">
-                    Search book by author name:
-                </label>
-                <br />
-                <input type="text" name="" id="search-input" value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input type="submit" name="Search" id="search-submit" />
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField id="standard-basic" label="Search book by author name" variant="standard" value={search} onChange={(e) => setSearch(e.target.value)} />
+                </Box>
+                <Button variant="outlined" size="small" type="submit" name="Search" id="search-submit" >Search</Button>
 
             </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {result.map((book) => (
-                        <tr key={book.id}>
-                            <td>{book.title} </td>
-                            <td>{book.author}</td>
-                            <td>{book.price}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <hr />
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Book Title</TableCell>
+                            <TableCell align="right">Author Name</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {result.map((book) => (
+                            <TableRow
+                                key={book.id}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {book.title}
+                                </TableCell>
+                                <TableCell align="right">{book.author}</TableCell>
+                                <TableCell align="right">{book.price}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
         </div>
     )
 }
