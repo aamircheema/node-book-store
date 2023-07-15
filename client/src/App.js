@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Booklist from './components/Booklist';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -9,19 +10,12 @@ function App() {
       .then(data => setBooks(data))
       .catch(error => console.error('Error fetching books:', error));
   }, []);
-
+  //console.log(books);
   return (
     <div>
-      <h1>Bookstore</h1>
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>
-            <h3>{book.title}</h3>
-            <p>Author: {book.author}</p>
-            <p>Price: ${book.price}</p>
-          </li>
-        ))}
-      </ul>
+      <h1>Book Store</h1>
+      <Booklist books={books} />
+
     </div>
   );
 }
