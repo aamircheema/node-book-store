@@ -11,7 +11,9 @@ import React from 'react';
 const Booklist = ({ books }) => {
     return (
         <div>
-            <h3 className='heading'>These books are available in our store.</h3>
+            <h1
+                style={{ textAlign: 'center', color: "green" }}
+                className='heading'>These books are available.</h1>
 
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -28,9 +30,7 @@ const Booklist = ({ books }) => {
                                 key={book.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
-                                    {book.title}
-                                </TableCell>
+                                <TableCell >{book.title}</TableCell>
                                 <TableCell align="right">{book.author}</TableCell>
                                 <TableCell align="right">{book.price}</TableCell>
                             </TableRow>

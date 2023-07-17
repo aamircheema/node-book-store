@@ -20,8 +20,9 @@ const AddBook = ({ books, onAddBook }) => {
 
     return (
         <div>
+
+            <h1 style={{ textAlign: 'center', color: "green" }}>Add Book</h1>
             <hr />
-            <h1>Add Book</h1>
             <form onSubmit={submitForm}>
                 <Box
                     component="form"
@@ -68,9 +69,11 @@ const AddBook = ({ books, onAddBook }) => {
                         required
                     />
                 </Box>
+                <hr />
                 <Button type="submit" size="small" variant="outlined" onClick={submitForm}>
                     Submit Form
                 </Button>
+
             </form>
         </div>
     );

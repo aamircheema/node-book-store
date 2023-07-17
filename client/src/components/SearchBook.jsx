@@ -32,49 +32,68 @@ const SearchBook = ({ books }) => {
     }
 
     return (
-        <div>
-            <hr />
-            <form onSubmit={submitForm}>
-                <Box
-                    component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField id="standard-basic" label="Search book by author name" variant="standard" value={search} onChange={(e) => setSearch(e.target.value)} />
-                </Box>
-                <Button variant="outlined" size="small" type="submit" name="Search" id="search-submit" >Search</Button>
+        <>
+            <div>
+                <h1 style={{ textAlign: 'center', color: "green" }}>Search Book</h1>
+            </div>
+            <div>
+                <form onSubmit={submitForm}>
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '25ch' },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                    >
+                        <TextField id="standard-basic" label="Search book by author name" variant="standard" value={search} onChange={(e) => setSearch(e.target.value)} />
+                    </Box>
+                    <br />
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        type="submit"
+                        name="Search"
+                        id="search-submit"
+                        color="secondary"
 
-            </form>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Book Title</TableCell>
-                            <TableCell align="right">Author Name</TableCell>
-                            <TableCell align="right">Price</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {result.map((book) => (
-                            <TableRow
-                                key={book.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {book.title}
-                                </TableCell>
-                                <TableCell align="right">{book.author}</TableCell>
-                                <TableCell align="right">{book.price}</TableCell>
+                    >
+                        Search
+                    </Button>
+
+                </form>
+            </div>
+            <br />
+            <div>
+                <h1 style={{ textAlign: 'center', color: 'green' }}>Search Result</h1>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Book Title</TableCell>
+                                <TableCell align="right">Author Name</TableCell>
+                                <TableCell align="right">Price</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {result.map((book) => (
+                                <TableRow
+                                    key={book.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {book.title}
+                                    </TableCell>
+                                    <TableCell align="right">{book.author}</TableCell>
+                                    <TableCell align="right">{book.price}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
 
-        </div>
+            </div >
+        </>
     )
 }
 
