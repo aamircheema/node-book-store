@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -22,26 +22,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
         border: 0,
     },
 }));
 
-
-
 const Booklist = ({ books }) => {
     return (
         <div>
-            <h1
-                style={{ textAlign: 'center', color: "green" }}
-                className='heading'>These books are available.</h1>
+            <h1 style={{ textAlign: 'center', color: "green" }}>These books are available.</h1>
 
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell align="right">Book Title</StyledTableCell>
+                            <StyledTableCell>Book Title</StyledTableCell>
                             <StyledTableCell align="right">Author Name</StyledTableCell>
                             <StyledTableCell align="right">Price</StyledTableCell>
                         </TableRow>
@@ -49,7 +44,7 @@ const Booklist = ({ books }) => {
                     <TableBody>
                         {books.map((book) => (
                             <StyledTableRow key={book.id}>
-                                <StyledTableCell align="right">{book.title}</StyledTableCell>
+                                <StyledTableCell component="th" scope="row">{book.title}</StyledTableCell>
                                 <StyledTableCell align="right">{book.author}</StyledTableCell>
                                 <StyledTableCell align="right">{book.price}</StyledTableCell>
                             </StyledTableRow>
@@ -57,8 +52,6 @@ const Booklist = ({ books }) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-
-
         </div>
     );
 };

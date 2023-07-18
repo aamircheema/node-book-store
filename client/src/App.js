@@ -9,10 +9,10 @@ import { Container } from '@mui/material';
 
 function App() {
   const [books, setBooks] = useState([]);
+
   const addBook = (book) => {
     setBooks([...books, book]);
   };
-
 
   useEffect(() => {
     fetch('http://localhost:3001/books')
@@ -23,13 +23,12 @@ function App() {
 
   return (
     <Router>
-
       <Navbar />
       <Container maxWidth='lg'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stock" element={<Booklist books={books} />} />
-          <Route path="/addBook" element={<AddBook books={books} onAddBook={addBook} />} />
+          <Route path="/addBook" element={<AddBook onAddBook={addBook} />} />
           <Route path="/search" element={<SearchBook books={books} />} />
         </Routes>
       </Container>
