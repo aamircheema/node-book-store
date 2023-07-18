@@ -37,7 +37,7 @@ const SearchBook = ({ books }) => {
                 <h1 style={{ textAlign: 'center', color: "green" }}>Search Book</h1>
             </div>
             <div>
-                <form onSubmit={submitForm}>
+                <form onSubmit={submitForm} style={{ textAlign: 'center' }}>
                     <Box
                         component="form"
                         sx={{
