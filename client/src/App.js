@@ -5,6 +5,7 @@ import AddBook from './components/AddBook';
 import SearchBook from './components/SearchBook';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import { Container } from '@mui/material';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -22,15 +23,16 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Navbar />
+
+      <Navbar />
+      <Container maxWidth='lg'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stock" element={<Booklist books={books} />} />
           <Route path="/addBook" element={<AddBook books={books} onAddBook={addBook} />} />
           <Route path="/search" element={<SearchBook books={books} />} />
         </Routes>
-      </div>
+      </Container>
     </Router>
   );
 }
