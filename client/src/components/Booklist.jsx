@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -27,7 +30,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-const Booklist = ({ books }) => {
+
+
+const Booklist = ({ books, deleteBook }) => {
+    const handleDeleteBook = (id) => {
+        deleteBook(id);
+    };
+
+
+
     return (
         <div>
             <h1 style={{ textAlign: 'center', color: "green" }}>These books are available.</h1>
@@ -39,6 +50,10 @@ const Booklist = ({ books }) => {
                             <StyledTableCell>Book Title</StyledTableCell>
                             <StyledTableCell align="right">Author Name</StyledTableCell>
                             <StyledTableCell align="right">Price</StyledTableCell>
+                            <StyledTableCell align="right">
+
+                                Delete Book
+                            </StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -47,12 +62,16 @@ const Booklist = ({ books }) => {
                                 <StyledTableCell component="th" scope="row">{book.title}</StyledTableCell>
                                 <StyledTableCell align="right">{book.author}</StyledTableCell>
                                 <StyledTableCell align="right">{book.price}</StyledTableCell>
+                                <StyledTableCell align="right"><Button size='small' onClick={() => handleDeleteBook(book.id)}>
+
+                                    Delete
+                                </Button></StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </div >
     );
 };
 

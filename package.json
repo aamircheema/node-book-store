@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "json-server": "^0.17.3"
+  },
+  "dependencies": {
+    "@mui/icons-material": "^5.14.0"
   }
 }

@@ -10,6 +10,12 @@ import { Container } from '@mui/material';
 function App() {
   const [books, setBooks] = useState([]);
 
+  const deleteBook = (id) => {
+    const updatedBooks = books.filter(book => book.id !== id)
+    setBooks(updatedBooks);
+  }
+
+
   const addBook = (book) => {
     setBooks([...books, book]);
   };
@@ -27,7 +33,7 @@ function App() {
       <Container maxWidth='lg'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/stock" element={<Booklist books={books} />} />
+          <Route path="/stock" element={<Booklist books={books} deleteBook={deleteBook} />} />
           <Route path="/addBook" element={<AddBook onAddBook={addBook} />} />
           <Route path="/search" element={<SearchBook books={books} />} />
         </Routes>
